@@ -1,3 +1,8 @@
+// Write a Java program that uses functions to perform the following:
+// i)sorts a list of integers in ascending order using bubble sort.
+// ii)then searches for a key value(integer) non recursively in the above sorted
+// list using binary search.
+
 import java.util.Scanner;
 
 public class BubbleSortBinarySearch {

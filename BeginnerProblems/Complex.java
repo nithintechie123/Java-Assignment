@@ -39,10 +39,8 @@ class Complex{
         double i=(this.real * c.imag) + (this.imag * c.real);
         return new Complex(r, i);
     }
-    
-};
 
-public class Main{
+
     public static void main(String[] args){
         System.out.println("Enter First Complex Number:  ");
         Complex c1=Complex.readComplex();
@@ -65,4 +63,5 @@ public class Main{
         mul.display();
         
     };
+    
 };
