@@ -1,29 +1,30 @@
 // Write a Java program that uses functions to perform the following:
-// i)sorts a list of integers in ascending order using bubble sort.
+// i)sorts a list of integers in ascending order using selection sort.
 // ii)then searches for a key value(integer) non recursively in the above sorted
 // list using binary search.
 
 import java.util.Scanner;
 
-public class BubbleSortBinarySearch {
+public class SelectionSortBinarySearch {
 
 
      // ----------------------------------------------------
-    // Function to perform Bubble Sort (Ascending Order)
+    // Function to perform Selection Sort (Ascending Order)
     // ----------------------------------------------------
-    public static void bubbleSort(int[] arr){
+    public static void selectionSort(int[] arr){
         int n=arr.length;
-
-        for(int i=0;i<n-1;i++){
-            for(int j=0;j<n-i-1;j++){
-
-                if(arr[j]>arr[j+1]){
-                    int temp=arr[j];
-                    arr[j]=arr[j+1];
-                    arr[j+1]=temp;
+        for(int i=0;i<n;i++){
+            int selectedIndex=i;
+            for(int j=i+1;j<n;j++){
+                if(arr[j]<arr[selectedIndex]){
+                  selectedIndex=j;
                 }
             }
+            int temp=arr[selectedIndex];
+            arr[selectedIndex]=arr[i];
+            arr[i]=temp;
         }
+
     }
 
     // ----------------------------------------------------
@@ -61,9 +62,9 @@ public class BubbleSortBinarySearch {
             arr[i]=sc.nextInt();
         }
 
-        bubbleSort(arr);
+        selectionSort(arr);
 
-        System.out.println("Sorted Elements using BubbleSort: ");
+        System.out.println("Sorted Elements using Selection Sort: ");
         for(int num:arr){
             System.out.print(num+ " ");
         }
@@ -71,7 +72,7 @@ public class BubbleSortBinarySearch {
         System.out.println("\nEnter Key Element");
         int key=sc.nextInt();
 
-        int result=BinarySearch(arr, key);
+        int result=binarySearch(arr, key);
 
         if(result!=-1){
             System.out.println("Element Found using Binary Search");
