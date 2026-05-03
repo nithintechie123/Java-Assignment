@@ -75,6 +75,5 @@ public class LinearSearchRecurAndNonRecur {
             default:
                 break;
         }
-        sc.close();
     }
 }
