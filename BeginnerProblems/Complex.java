@@ -1,67 +1,80 @@
 import java.util.Scanner;
 
-class Complex{
-    private double real;
-    private double imag;
+class Complex {
 
-    public Complex(double real,double imag){
-        this.real=real;
-        this.imag=imag;
-    };
+    // Immutable fields
+    private final double real;
+    private final double imag;
 
-    public static Complex readComplex(){
-        Scanner sc=new Scanner(System.in);
+    // Constructor
+    public Complex(double real, double imag) {
+        this.real = real;
+        this.imag = imag;
+    }
+
+    // ----------------------------------------------------
+    // Static method to read complex number
+    // ----------------------------------------------------
+    public static Complex readComplex(Scanner sc) {
+
         System.out.print("Enter real part: ");
-        double r=sc.nextDouble();
-        System.out.print("Enter imag part: ");
-        double i=sc.nextDouble();
+        double r = sc.nextDouble();
 
-        return new Complex(r,i);
-    };
-    
+        System.out.print("Enter imaginary part: ");
+        double i = sc.nextDouble();
 
-    public void display(){
-        if(imag>=0){
-            System.out.println(real + " + " + imag + "i");
-        }else{
-            System.out.println(real + " - " + (-imag) + "i");
-        }
-    }
-
-    public Complex add(Complex c){
-        double r=this.real+c.real;
-        double i=this.imag+c.imag;
         return new Complex(r, i);
     }
 
-    public Complex multiply(Complex c){
-        double r=(this.real * c.real) - (this.imag * c.imag);
-        double i=(this.real * c.imag) + (this.imag * c.real);
-        return new Complex(r, i);
+    // ----------------------------------------------------
+    // Addition
+    // ----------------------------------------------------
+    public Complex add(Complex c) {
+        return new Complex(this.real + c.real, this.imag + c.imag);
     }
 
+    // ----------------------------------------------------
+    // Multiplication
+    // ----------------------------------------------------
+    public Complex multiply(Complex c) {
+        return new Complex(
+            (this.real * c.real) - (this.imag * c.imag),
+            (this.real * c.imag) + (this.imag * c.real)
+        );
+    }
 
-    public static void main(String[] args){
-        System.out.println("Enter First Complex Number:  ");
-        Complex c1=Complex.readComplex();
+    // ----------------------------------------------------
+    // toString() for clean output
+    // ----------------------------------------------------
+    @Override
+    public String toString() {
+        return (imag >= 0)
+                ? real + " + " + imag + "i"
+                : real + " - " + (-imag) + "i";
+    }
 
-        System.out.println("Enter Second Complex Number:  ");
-        Complex c2=Complex.readComplex();
+    // ----------------------------------------------------
+    // Main method
+    // ----------------------------------------------------
+    public static void main(String[] args) {
 
-        System.out.println("First Complex Number");
-        c1.display();
+        Scanner sc = new Scanner(System.in); // Single Scanner
 
-        System.out.println("Second Complex Number");
-        c2.display();
+        System.out.println("Enter First Complex Number:");
+        Complex c1 = readComplex(sc);
 
-        Complex sum=c1.add(c2);
-        System.out.println("Addition of Complex Numbers: ");
-        sum.display();
+        System.out.println("\nEnter Second Complex Number:");
+        Complex c2 = readComplex(sc);
 
-        Complex mul=c1.multiply(c2);
-        System.out.println("Multiplication of Complex Numbers: ");
-        mul.display();
-        
-    };
-    
-};
+        System.out.println("\nFirst Complex Number: " + c1);
+        System.out.println("Second Complex Number: " + c2);
+
+        Complex sum = c1.add(c2);
+        System.out.println("\nAddition: " + sum);
+
+        Complex product = c1.multiply(c2);
+        System.out.println("Multiplication: " + product);
+
+        sc.close();
+    }
+}
