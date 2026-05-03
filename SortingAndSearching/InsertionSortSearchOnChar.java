@@ -5,7 +5,7 @@
 
 import java.util.*;
 
-public class CharacterSortSearch {
+public class InsertionSortSearchOnChar {
 
     public static void insertionSort(char[] arr){
         int n=arr.length;
