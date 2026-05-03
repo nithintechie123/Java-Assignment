@@ -71,7 +71,7 @@ public class BubbleSortBinarySearch {
         System.out.println("\nEnter Key Element");
         int key=sc.nextInt();
 
-        int result=BinarySearch(arr, key);
+        int result=binarySearch(arr, key);
 
         if(result!=-1){
             System.out.println("Element Found using Binary Search");
