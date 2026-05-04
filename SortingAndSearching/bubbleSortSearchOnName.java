@@ -1,5 +1,5 @@
 package SortingAndSearching;
-// Write a Java program that uses functions to perform the following:
+// 4.Write a Java program that uses functions to perform the following:
 // i)sorts a list of names in ascending order using bubble sort.
 // ii)then searches for a key value(name)
 // using binary search.

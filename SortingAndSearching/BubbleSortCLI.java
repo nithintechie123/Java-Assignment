@@ -1,6 +1,6 @@
 package SortingAndSearching;
 
-// Write a Java program that sorts a list of integers passed from the command-
+//5.Write a Java program that sorts a list of integers passed from the command-
 // line in ascending order using bubble sort.
 
 public class BubbleSortCLI {

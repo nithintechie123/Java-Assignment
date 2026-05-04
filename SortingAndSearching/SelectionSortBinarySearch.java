@@ -1,4 +1,4 @@
-// Write a Java program that uses functions to perform the following:
+//3.Write a Java program that uses functions to perform the following:
 // i)sorts a list of integers in ascending order using selection sort.
 // ii)then searches for a key value(integer) non recursively in the above sorted
 // list using binary search.

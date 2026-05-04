@@ -1,4 +1,4 @@
-// Write a Java program that uses functions to perform the following:
+//2.Write a Java program that uses functions to perform the following:
 // i)sorts a list of characters in ascending order using insertion sort.
 // ii)then searches for a key value(character) recursively in the above sorted list
 // using binary search.
