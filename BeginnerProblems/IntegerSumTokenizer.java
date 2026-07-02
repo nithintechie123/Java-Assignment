@@ -6,7 +6,7 @@ public class IntegerSumTokenizer {
         
         Scanner sc=new Scanner(System.in);
 
-        System.out.println("Enter integers separated by strings: ");
+        System.out.println("Enter integers separated by spaces: ");
         String input=sc.nextLine();
 
         StringTokenizer st=new StringTokenizer(input);
