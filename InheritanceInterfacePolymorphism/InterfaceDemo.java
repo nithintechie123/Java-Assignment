@@ -5,12 +5,18 @@ package InheritanceInterfacePolymorphism;
 
 interface Shape{
     void draw();
+    void calculateArea();
 }
 
 class Circle implements Shape{
     @Override
     public void draw(){
         System.out.println("Drawing Circle");
+    }
+
+    @Override
+    public void calculateArea(){
+        System.out.println("Area of Circle");
     }
 }
 
@@ -19,12 +25,21 @@ class Rectangle implements Shape{
     public void draw(){
         System.out.println("Drawing Rectangle");
     }
+     @Override
+    public void calculateArea(){
+        System.out.println("Area of Rectangle");
+    }
 }
 
 class Triangle implements Shape{
     @Override
     public void draw(){
         System.out.println("Drawing Triangle");
+    }
+    
+    @Override
+    public void calculateArea(){
+        System.out.println("Area of Triangle");
     }
 }
 
@@ -37,13 +52,16 @@ public class InterfaceDemo {
         //Assign Circle object
         s=new Circle();
         s.draw(); //Calls Circle's draw()
+        s.calculateArea();
 
         //Assign Rectangle object
         s=new Rectangle();
         s.draw(); //Calls Rectangle's draw()
+        s.calculateArea();
 
         //Assign Triangle object
         s=new Triangle();
         s.draw();  //Calls Triangle's draw()
+        s.calculateArea();
     }
 }

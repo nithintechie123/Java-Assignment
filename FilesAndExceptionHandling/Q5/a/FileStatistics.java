@@ -29,12 +29,15 @@ public class FileStatistics {
                 //Count lines
                 lines++;
 
-                characters += line.length();
+                characters += line.replace(" ","").length();
 
                 //Removes extra spaces and count words only if line is not empty
                 if (!line.trim().isEmpty()) {
+                    //System.out.println(line);
                     String[] wordArray = line.split("\\s+");
+                    
                     words += wordArray.length;
+                    //System.out.println(words);
                 }
 
             }

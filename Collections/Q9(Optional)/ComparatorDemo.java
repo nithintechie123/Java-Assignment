@@ -27,6 +27,7 @@ class Student {
 class NameComparator
         implements Comparator<Student> {
 
+    @Override
     public int compare(Student s1,
             Student s2) {
 
@@ -55,11 +56,10 @@ public class ComparatorDemo {
                         "Rahul",
                         75));
 
-        students.add(
-                new Student(
-                        103,
-                        "Anjali",
-                        95));
+        students.add(new Student(
+                103,
+                "Anjali",
+                95));
 
         Collections.sort(
                 students,

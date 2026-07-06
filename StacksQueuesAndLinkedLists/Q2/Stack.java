@@ -87,6 +87,7 @@ public class Stack {
                     System.out.println(e.getMessage());
                 }
             }
+            System.out.println("Stack Size: "+s.size());
             s.display();
 
             System.out.println("\n Popped Elements(Reverse Order): ");
@@ -96,11 +97,6 @@ public class Stack {
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
-            }
-            try {
-                s.pop();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
             }
         } catch (IllegalArgumentException e) {
             System.out.println(

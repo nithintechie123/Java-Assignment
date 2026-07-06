@@ -1,7 +1,7 @@
 // 1.Write a Java program to perform the following:
 // i)Create a LinkedList collection containing the following string objects(colors):
-// red , blue, green, yellow, black.
-// ii)Using an iterator, scan the
+// // red , blue, green, yellow, black.
+// ii)Using an iterator, scan the above list and remove all elements(colors) that have
 // a string length of less than 5.
 
 import java.util.Iterator;

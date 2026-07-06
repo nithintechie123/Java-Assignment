@@ -1,8 +1,8 @@
-package FilesAndExceptionHandling.Q2;
 // 2. Write a Java program to change a specific character in a file. Filename,
 // number of the byte in the file to be changed
 // specified on the command line.
 
+import java.io.FileNotFoundException;
 import java.io.RandomAccessFile;
 
 public class ChangeCharacterInFile {
@@ -33,7 +33,10 @@ public class ChangeCharacterInFile {
 
             file.close();
             
-        } catch (Exception e) {
+        }catch(FileNotFoundException e){
+            System.out.println("Error Message: "+e.getMessage());
+        }
+        catch(Exception e) {
             System.out.println("Error Message: "+e.getMessage());
         }
     }

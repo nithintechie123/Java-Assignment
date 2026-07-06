@@ -6,6 +6,7 @@
 // appropriate implementations. Demonstrate polymorphism.
 //It defines a common structure for all shapes
 abstract class Polygon{
+    abstract  void draw();
     abstract double area();
     abstract double perimeter();
 }
@@ -16,6 +17,11 @@ class Rectangle extends Polygon{
     Rectangle(double l,double w) {
         length=l;
         width=w;
+    }
+
+    @Override
+    void draw(){
+        System.out.println("Draw Rectangle..");
     }
 
     @Override
@@ -33,6 +39,13 @@ class Square extends Polygon{
     double side;
 
     
+
+    
+    @Override
+    void draw(){
+        System.out.println("Draw Square..");
+    }
+
 
     Square(double s) {
         side=s;
@@ -59,6 +72,13 @@ class Triangle extends Polygon{
         c=z;
     }
 
+    
+    @Override
+    void draw(){
+        System.out.println("Draw Triangle..");
+    }
+
+
     @Override
     double area(){
         //Using Heron's formula
@@ -82,17 +102,22 @@ public class PolygonDemo{
         //Assign Rectangle object
         p=new Rectangle (5,3);
         System.out.println("-------------------------------------");
+        p.draw();
         System.out.println("Rectangle Area: "+p.area());
         System.out.println("Rectangle Perimeter: "+p.perimeter());
+        
 
         //Assign Square object (same reference,different object)
         p=new Square(4);
         System.out.println("-------------------------------------");
+        p.draw();
         System.out.println("\nSquare Area: "+p.area());
         System.out.println("Square Perimeter: "+p.perimeter());
+        
 
         //Assign Triangle object
         p=new Triangle(3, 4, 5);
+        p.draw();
         System.out.println("-------------------------------------");
         System.out.println("\nTriangle Area: "+p.area());
         System.out.println("Triangle Perimeter: "+p.perimeter());
