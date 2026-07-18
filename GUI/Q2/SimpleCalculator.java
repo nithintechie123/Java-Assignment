@@ -69,12 +69,12 @@ public class SimpleCalculator extends JFrame implements ActionListener {
 
             char op = ' ';
             if (exp.contains("+")) {
-                op = '+'; 
-            }else if (exp.contains("-")) {
-                op = '-'; 
-            }else if (exp.contains("*")) {
-                op = '*'; 
-            }else if (exp.contains("%")) {
+                op = '+';
+            } else if (exp.contains("-")) {
+                op = '-';
+            } else if (exp.contains("*")) {
+                op = '*';
+            } else if (exp.contains("%")) {
                 op = '%';
             }
 
