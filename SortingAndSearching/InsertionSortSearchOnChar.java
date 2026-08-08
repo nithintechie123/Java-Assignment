@@ -58,7 +58,7 @@ public class InsertionSortSearchOnChar {
         System.out.print("\nEnter the Key: ");
         char key=sc.next().charAt(0);
 
-        int result=binarySearch(arr, 0, arr.length, key);
+        int result=binarySearch(arr, 0, arr.length-1, key);
 
         if(result==-1){
             System.out.println("Character Not Found in the Array");
