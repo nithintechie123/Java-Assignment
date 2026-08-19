@@ -1,102 +1,98 @@
-public class ProducerConsumerDemo {
-    public static void main(String[] args) {
-        SharedBuffer buffer = new SharedBuffer(5);
+class Buffer {
 
-        Thread producer = new Thread(new Producer(buffer), "Producer");
-        Thread consumer = new Thread(new Consumer(buffer), "Consumer");
+    int data;
+    boolean available = false;
+
+    // Producer adds data
+    synchronized void produce(int value) {
+
+        // Wait if buffer already has data
+        while (available) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+
+        data = value;
+        available = true;
+
+        System.out.println("Produced: " + data);
+
+        // Notify consumer
+        notify();
+    }
+
+    // Consumer removes data
+    synchronized void consume() {
+
+        // Wait if buffer is empty
+        while (!available) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+
+        System.out.println("Consumed: " + data);
+
+        available = false;
+
+        // Notify producer
+        notify();
+    }
+}
+
+
+// Producer Thread
+class Producer extends Thread {
+
+    Buffer buffer;
+
+    Producer(Buffer buffer) {
+        this.buffer = buffer;
+    }
+
+    public void run() {
+
+        for (int i = 1; i <= 5; i++) {
+            buffer.produce(i);
+        }
+    }
+}
+
+
+// Consumer Thread
+class Consumer extends Thread {
+
+    Buffer buffer;
+
+    Consumer(Buffer buffer) {
+        this.buffer = buffer;
+    }
+
+    public void run() {
+
+        for (int i = 1; i <= 5; i++) {
+            buffer.consume();
+        }
+    }
+}
+
+
+// Main Class
+public class ProducerConsumerDemo {
+
+    public static void main(String[] args) {
+
+        Buffer buffer = new Buffer();
+
+        Producer producer = new Producer(buffer);
+        Consumer consumer = new Consumer(buffer);
 
         producer.start();
         consumer.start();
-
-        try {
-            producer.join();
-            consumer.join();
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-
-        System.out.println("Producer and Consumer have finished.");
-    }
-}
-
-class SharedBuffer {
-    private final int[] buffer;
-    private int count = 0;
-    private int in = 0;
-    private int out = 0;
-
-    public SharedBuffer(int size) {
-        buffer = new int[size];
-    }
-
-    public synchronized void produce(int value) throws InterruptedException {
-        while (count == buffer.length) {
-            // Buffer is full, wait until consumer removes an item
-            wait();
-        }
-
-        buffer[in] = value;
-        in = (in + 1) % buffer.length;
-        count++;
-        System.out.println(Thread.currentThread().getName() + " produced: " + value);
-
-        // Notify the consumer that an item is available
-        notifyAll();
-    }
-
-    public synchronized int consume() throws InterruptedException {
-        while (count == 0) {
-            // Buffer is empty, wait until producer adds an item
-            wait();
-        }
-
-        int value = buffer[out];
-        out = (out + 1) % buffer.length;
-        count--;
-        System.out.println(Thread.currentThread().getName() + " consumed: " + value);
-
-        // Notify the producer that there is space available
-        notifyAll();
-        return value;
-    }
-}
-
-class Producer implements Runnable {
-    private final SharedBuffer buffer;
-
-    public Producer(SharedBuffer buffer) {
-        this.buffer = buffer;
-    }
-
-    @Override
-    public void run() {
-        try {
-            for (int i = 1; i <= 10; i++) {
-                buffer.produce(i);
-                Thread.sleep(500); // simulate time taken to produce
-            }
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-}
-
-class Consumer implements Runnable {
-    private final SharedBuffer buffer;
-
-    public Consumer(SharedBuffer buffer) {
-        this.buffer = buffer;
-    }
-
-    @Override
-    public void run() {
-        try {
-            for (int i = 1; i <= 10; i++) {
-                buffer.consume();
-                Thread.sleep(700); // simulate time taken to consume
-            }
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
     }
 }
