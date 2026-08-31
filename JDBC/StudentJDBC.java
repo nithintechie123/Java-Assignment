@@ -10,13 +10,13 @@
 
 import java.sql.*;
 
-public class studentJDBC{
+public class StudentJDBC{
     
-    static final String DB_URL="jdbc:mysql://localhost:3306/StudentDB";
+    static final String DB_URL="jdbc:mysql://localhost:3306/studentdb";
 
     //Database Username and Password
     static final String USER="root";
-    static final String PASS="password";
+    static final String PASS="Nithin123@";
 
     public static void main(String[] args){
         try {

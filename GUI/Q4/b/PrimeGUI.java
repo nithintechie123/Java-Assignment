@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -37,7 +38,8 @@ public class PrimeGUI extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e){
-        int n=Integer.parseInt(textField.getText());
+       try {
+            int n=Integer.parseInt(textField.getText());
 
         result.setText("Prime Numbers up to "+ n +":\n");
 
@@ -51,9 +53,12 @@ public class PrimeGUI extends JFrame implements ActionListener{
                 }
             }
             if(isPrime){
-                result.append(i+" ");
+                result.append(i+"\n");
             }
         }
+       } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this,ex,"Number Format Exception",JOptionPane.ERROR_MESSAGE );
+       }
     }
 
     public static void main(String[] args) {

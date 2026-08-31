@@ -5,7 +5,7 @@
 // Number Format Exception. If Num2 were Zero, the program would throw an
 // Arithmetic Exception Display the exception in a message dialog box.
 
-import java.awt.GridLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -22,13 +22,15 @@ public class IntegerDivision extends JFrame implements ActionListener {
 
     public IntegerDivision() {
         setTitle("Integer Division");
-        setSize(350, 180);
+        setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(4, 2, 10, 10));
+        // setLayout(new GridLayout(4, 2, 10, 10));
+        setLayout(new FlowLayout());
 
-        num1Field = new JTextField();
-        num2Field = new JTextField();
-        resultField = new JTextField();
+
+        num1Field = new JTextField(20);
+        num2Field = new JTextField(20);
+        resultField = new JTextField(20);
         resultField.setEditable(false);
 
         JButton divideButton = new JButton("Divide");
@@ -40,7 +42,6 @@ public class IntegerDivision extends JFrame implements ActionListener {
         add(num2Field);
         add(new JLabel("Result:"));
         add(resultField);
-        add(new JLabel());
         add(divideButton);
 
         setLocationRelativeTo(null);
